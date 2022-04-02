@@ -126,6 +126,7 @@ export class SystemVerilogIndexer {
         return new Promise(async (resolve) => {
             resolve(
                 workspace.openTextDocument(uri).then((doc) => {
+                    window.showInformationMessage(`File: ` + uri); // prettier-ignore
                     if (total_files >= 1000 * this.parallelProcessing || this.forceFastIndexing) {
                         return this.parser.get_all_recursive(doc, 'fast', 0);
                     }
